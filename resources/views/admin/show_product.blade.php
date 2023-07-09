@@ -22,8 +22,7 @@
             padding-top: 20px;
         }
         .img_size{
-            width: 150px;
-            height: 150px;
+            min-width: 150px;
         }
         .th_color{
             background: skyblue;
@@ -71,7 +70,7 @@
                         <td>{{ $product->catagory }}</td>
                         <td>{{ $product->prize }}</td>
                         <td>{{ $product->discount_price }}</td>
-                        <td><img style="img_size" src='/product/{{ $product->image }}' alt="product image"></td>
+                        <td><img class="img_size" src='/product/{{ $product->image }}' alt="product image"></td>
                         <td><a onclick="return confirm('Are you sure you want to delete {{ $product->title }}')" class="btn btn-danger" href="{{ url('delete_product', $product->id) }}">Delete</a></td>
                         <td><a class="btn btn-success" href="{{ url('update_product', $product->id) }}">Edit</a></td>
                     </tr>

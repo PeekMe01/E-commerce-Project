@@ -54,6 +54,18 @@ Route::get('/update_product/{id}', [AdminController::class, 'update_product'])->
 
 Route::post('/update_product_confirm/{id}', [AdminController::class, 'update_product_confirm'])->middleware('auth');
 
+Route::get('/order', [AdminController::class, 'order'])->middleware('auth');
+
+Route::get('/delivered/{id}', [AdminController::class, 'delivered'])->middleware('auth');
+
+Route::get('/print_pdf/{id}', [AdminController::class, 'print_pdf'])->middleware('auth');
+
+
+
+
+
+
+
 Route::get('/product_details/{id}', [HomeController::class, 'product_details']);
 
 Route::post('/add_cart/{id}', [HomeController::class, 'add_cart'])->middleware('auth');
@@ -67,5 +79,3 @@ Route::get('/cash_order', [HomeController::class, 'cash_order'])->middleware('au
 Route::get('/stripe/{totalprice}', [HomeController::class, 'stripe'])->middleware('auth');
 
 Route::post('stripe/{totalprice}', [HomeController::class,'stripePost'])->name('stripe.post');
-
-Route::get('/order', [AdminController::class, 'order'])->middleware('auth');
