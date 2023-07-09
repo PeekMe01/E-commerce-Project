@@ -132,4 +132,8 @@ class AdminController extends Controller
 
         return redirect('show_product')->with(['message'=>'Listing updated successfuly!', 'products'=>Product::all()]);
     }
+
+    public function order() {
+        return view('admin.order');
+    }
 }
