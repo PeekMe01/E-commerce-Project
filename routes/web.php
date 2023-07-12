@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
  });
 
-Route::get('/redirect', [HomeController::class, 'redirect']);
+Route::get('/redirect', [HomeController::class, 'redirect'])->middleware('auth','verified');
 
 Route::get('/view_catagory', [AdminController::class, 'view_catagory'])->middleware('auth');
 
@@ -59,6 +59,10 @@ Route::get('/order', [AdminController::class, 'order'])->middleware('auth');
 Route::get('/delivered/{id}', [AdminController::class, 'delivered'])->middleware('auth');
 
 Route::get('/print_pdf/{id}', [AdminController::class, 'print_pdf'])->middleware('auth');
+
+Route::get('/send_email/{id}', [AdminController::class, 'send_email'])->middleware('auth');
+
+Route::post('/send_user_email/{id}', [AdminController::class, 'send_user_email'])->middleware('auth');
 
 
 
