@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <base href="/public"> <!-- Because somehow the file is unable to locate the public folder -->
     @include('admin.css')
     <style type="text/css">
         .div_center{

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LogoutController;
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,9 @@ Route::get('/send_email/{id}', [AdminController::class, 'send_email'])->middlewa
 
 Route::post('/send_user_email/{id}', [AdminController::class, 'send_user_email'])->middleware('auth');
 
+Route::get('/search', [AdminController::class, 'searchdata'])->middleware('auth');
+
+
 
 
 
@@ -83,3 +87,22 @@ Route::get('/cash_order', [HomeController::class, 'cash_order'])->middleware('au
 Route::get('/stripe/{totalprice}', [HomeController::class, 'stripe'])->middleware('auth');
 
 Route::post('stripe/{totalprice}', [HomeController::class,'stripePost'])->name('stripe.post');
+
+Route::get('/show_order', [HomeController::class, 'show_order'])->middleware('auth');
+
+Route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order'])->middleware('auth');
+
+Route::post('/add_comment', [HomeController::class, 'add_comment'])->middleware('auth');
+
+Route::post('add_reply', [HomeController::class, 'add_reply'])->middleware('auth');
+
+Route::get('product_search', [HomeController::class, 'product_search']);
+
+Route::get('products', [HomeController::class, 'product']);
+
+Route::get('search_product', [HomeController::class, 'search_product']);
+
+
+
+Route::get('auth/google', [GoogleController::class, 'googlepage']);
+Route::get('auth/google/callback', [GoogleController::class, 'googlecallback']);
